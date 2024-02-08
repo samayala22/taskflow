@@ -104,7 +104,7 @@ TF_FORCE_INLINE auto make_for_each_index_task(T b, T e, C c, P&& part = P()){
     T_t end = e;
     
     // nothing to be done if the range is invalid
-    if(is_range_invalid(beg, end, 1)) {
+    if(is_range_invalid(beg, end)) {
       return;
     }
 

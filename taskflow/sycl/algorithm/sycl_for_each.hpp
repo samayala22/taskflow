@@ -30,7 +30,7 @@ auto syclFlow::_for_each_cgh(I first, I last, C&& op) {
 template <typename I, typename C>
 auto syclFlow::_for_each_index_cgh(I first, I last, I step, C&& op) {
 
-  if(is_range_invalid(first, last, step)) {
+  if(is_range_invalid(first, last)) {
     TF_THROW("invalid range [", first, ", ", last, ") with step size ", step);
   }
 
