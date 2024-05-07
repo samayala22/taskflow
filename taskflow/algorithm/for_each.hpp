@@ -109,8 +109,7 @@ TF_FORCE_INLINE auto make_for_each_index_task(T b, T e, C c, P&& part = P()){
     }
 
     size_t W = rt.executor().num_workers();
-    T_t n = end-beg;
-    size_t N = static_cast<size_t>(n);
+    size_t N = static_cast<size_t>(end-beg);
 
     // only myself - no need to spawn another graph
     if(W <= 1 || N <= part.chunk_size()) {
