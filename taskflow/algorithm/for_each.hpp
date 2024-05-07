@@ -141,10 +141,10 @@ TF_FORCE_INLINE auto make_for_each_index_task(T b, T e, C c, P&& part = P()){
               [&](size_t part_b, size_t part_e) {
                 if constexpr(is_index_func<T, C>::value) {
                   for(size_t i=part_b; i<part_e; i++) {
-                    c(static_cast<T_t>(i));
+                    c(static_cast<T_t>(i+beg));
                   }
                 } else {
-                  c(static_cast<T_t>(part_b), static_cast<T_t>(part_e));
+                  c(static_cast<T_t>(part_b+beg), static_cast<T_t>(part_e+beg));
                 }
               }
             );
@@ -163,10 +163,10 @@ TF_FORCE_INLINE auto make_for_each_index_task(T b, T e, C c, P&& part = P()){
             [&](size_t part_b, size_t part_e) {
               if constexpr(is_index_func<T, C>::value) {
                 for(size_t i=part_b; i<part_e; i++) {
-                  c(static_cast<T_t>(i));
+                  c(static_cast<T_t>(i+beg));
                 }
               } else {
-                c(static_cast<T_t>(part_b), static_cast<T_t>(part_e));
+                c(static_cast<T_t>(part_b+beg), static_cast<T_t>(part_e+beg));
               }
             }
           ); 
