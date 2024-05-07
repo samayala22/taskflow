@@ -116,11 +116,11 @@ TF_FORCE_INLINE auto make_for_each_index_task(T b, T e, C c, P&& part = P()){
     if(W <= 1 || N <= part.chunk_size()) {
         part.invoke([&](){
           if constexpr(is_index_func<T, C>::value) {
-            for(T_t i=0; i<n; i++) {
+            for(T_t i=beg; i<end; i++) {
               c(i);
             }
           } else {
-            c(0, n);
+            c(beg, end);
           }
         });
         return;
